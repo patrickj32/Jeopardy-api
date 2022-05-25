@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class Jeopardy extends Component {
 
   state = {
-    data: {},
+    data: {
+      // category: {}
+    },
     score: 0
   }
 
@@ -21,7 +23,8 @@ class Jeopardy extends Component {
 
         //update state with the data from the API causing the page to re-render
         this.setState({
-          data: data[0] //grab the first question from the array returned
+          data: data[0] ,//grab the first question from the array returned
+          // score: 0
         });
       })
       //handle any errors/failures with getting data from the API
@@ -30,19 +33,43 @@ class Jeopardy extends Component {
       });
   }
 
+
   //when the component mounts, get a the first question
   componentDidMount() {
     this.getNewQuestion();
   }
 
+  increaseScore = () => {
+    this.setState({
+      score: this.state.score + this.state.data.value
+    });
+  }    
+
   //display the results on the screen
   render() {
+
+    // example of conditional rendering ***
+  let category = ""
+  if(this.state.data.category){
+    category = this.state.data.category.title
+
+  }
+  // *******
     return (
       <div>
         {/* Displaying the question and answer to help you get started */}
 
         <div>Question: {this.state.data.question}</div>
+        <div>Category: {category}</div>
         <div>Answer: {this.state.data.answer}</div>
+        <div>Value: {this.state.data.value}</div>
+        <div></div>
+        <div>Score: {this.state.score}</div>
+        <input></input>
+        <button onClick={this.increaseScore}>Submit</button>
+
+
+
       </div>
     );
   }

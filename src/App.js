@@ -1,5 +1,5 @@
 import './App.css';
-import Jeopardy from "./Componets/Jeopardy.js"
+import Jeopardy from "./componets/Jeopardy.js"
 
 function App() {
   return (
