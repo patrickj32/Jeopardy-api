@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 
 class Jeopardy extends Component {
+  constructor(props) {
+    super(props)
 
-  state = {
-    data: {
-      // category: {}
-    },
-    score: 0
+    this.userInput = React.createRef()
   }
 
-  //get a new random question from the API and add it to the data object in state
+  state = {
+    data: {},
+    score: 0,
+
+  }
+
+  // get a new random question from the API and add it to the data object in state
   getNewQuestion() {
     //use fetch to make an API call and get a random Jeopardy question (returns a promise)
     fetch(`https://jservice.io/api/random`)
@@ -23,7 +27,7 @@ class Jeopardy extends Component {
 
         //update state with the data from the API causing the page to re-render
         this.setState({
-          data: data[0] ,//grab the first question from the array returned
+          data: data[0],//grab the first question from the array returned
           // score: 0
         });
       })
@@ -37,42 +41,79 @@ class Jeopardy extends Component {
   //when the component mounts, get a the first question
   componentDidMount() {
     this.getNewQuestion();
+
+
+  }
+
+
+  getUserAnswer = () => {
+
+    if (this.userInput.current.value === this.state.data.answer) {
+      this.increaseScore()
+    } else {
+
+      this.decreaseScore()
+
+    }
   }
 
   increaseScore = () => {
+
     this.setState({
+
       score: this.state.score + this.state.data.value
-    });
-  }    
+
+    })
+
+  }
+  decreaseScore = () => {
+
+    this.setState({
+
+      score: this.state.score - this.state.data.value
+
+    })
+
+  }
+
 
   //display the results on the screen
   render() {
 
     // example of conditional rendering ***
-  let category = ""
-  if(this.state.data.category){
-    category = this.state.data.category.title
+    let category = ""
+    if (this.state.data.category) {
+      category = this.state.data.category.title
 
-  }
-  // *******
-    return (
-      <div>
-        {/* Displaying the question and answer to help you get started */}
+      // }
+      // *******
+      return (
+        <div>
+          {/* Displaying the question and answer to help you get started */}
 
-        <div>Question: {this.state.data.question}</div>
-        <div>Category: {category}</div>
-        <div>Answer: {this.state.data.answer}</div>
-        <div>Value: {this.state.data.value}</div>
-        <div></div>
-        <div>Score: {this.state.score}</div>
-        <input></input>
-        <button onClick={this.increaseScore}>Submit</button>
+          <div>Question: {this.state.data.question}</div>
+          <div>Category: {category}</div>
+          <div>Answer: {this.state.data.answer}</div>
+          <div>Value: {this.state.data.value}</div>
+          <div></div>
+          <div>Score: {this.state.score}</div>
+          <input type="text" ref={this.userInput} ></input>
+          <button onClick={this.getUserAnswer}>Submit</button>
 
 
 
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 
 export default Jeopardy;
+
+
+// ******************5/31/2020 at 6:30pm*******
+// Where are we?
+
+
+
+// -For Eric...Mentioned mounting multiple components since your Ref shit ist working with getNewQuestion {}
