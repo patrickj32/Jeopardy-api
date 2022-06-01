@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 
 class Jeopardy extends Component {
-  constructor(props) {
-    super(props)
 
-    this.userInput = React.createRef()
-  }
+  userInput = React.createRef()
 
   state = {
     data: {},
-    score: 0,
+    score: 0
 
   }
 
@@ -114,6 +111,9 @@ export default Jeopardy;
 // ******************5/31/2020 at 6:30pm*******
 // Where are we?
 
+// Got a win yesterday with the add and subtract functions. On to the next  one!!!
+// Possible bug: not all the jeopardy questions are giving me a value, 
+// -After the user answers a question display another random question from the API (this.getNewQuestion).
 
 
-// -For Eric...Mentioned mounting multiple components since your Ref shit ist working with getNewQuestion {}
+
