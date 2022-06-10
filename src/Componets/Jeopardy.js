@@ -25,6 +25,8 @@ class Jeopardy extends Component {
         //update state with the data from the API causing the page to re-render
         this.setState({
           data: data[0],//grab the first question from the array returned
+
+
           // score: 0
         });
       })
@@ -52,26 +54,42 @@ class Jeopardy extends Component {
       this.decreaseScore()
 
     }
+    this.getNewQuestion()
+    this.userInput.current.value = ""
   }
 
   increaseScore = () => {
 
-    this.setState({
+    this.setState((state) =>({
 
-      score: this.state.score + this.state.data.value
+      score: state.score + state.data.value
 
-    })
+    }))
 
   }
   decreaseScore = () => {
 
-    this.setState({
+    this.setState((state) => ({
 
-      score: this.state.score - this.state.data.value
+      score: state.score - state.data.value
 
-    })
+    }))
 
   }
+
+
+
+
+
+  //  *******Trying to clear the input field on submit*****
+  // clearInputField = () => {
+  //   console.log("ahh")
+  //   this.setState({
+  //     userInput: <input type="text" ref={this.userInput}>0</input>
+
+
+  //   })
+  // }
 
 
   //display the results on the screen
@@ -82,38 +100,42 @@ class Jeopardy extends Component {
     if (this.state.data.category) {
       category = this.state.data.category.title
 
-      // }
-      // *******
-      return (
-        <div>
-          {/* Displaying the question and answer to help you get started */}
-
-          <div>Question: {this.state.data.question}</div>
-          <div>Category: {category}</div>
-          <div>Answer: {this.state.data.answer}</div>
-          <div>Value: {this.state.data.value}</div>
-          <div></div>
-          <div>Score: {this.state.score}</div>
-          <input type="text" ref={this.userInput} ></input>
-          <button onClick={this.getUserAnswer}>Submit</button>
-
-
-
-        </div>
-      );
     }
+    // *******
+    return (
+      <div>
+        {/* Displaying the question and answer to help you get started */}
+
+        <div>Question: {this.state.data.question}</div>
+        <div>Category: {category}</div>
+        <div>Answer: {this.state.data.answer}</div>
+        <div>Value: {this.state.data.value}</div>
+        <div></div>
+        <div>Score: {this.state.score}</div>
+        <input type="text" ref={this.userInput} ></input>
+        <button type="submit" onClick={this.getUserAnswer}>Submit</button>
+
+
+
+      </div>
+    );
   }
 }
+
 
 export default Jeopardy;
 
 
-// ******************5/31/2020 at 6:30pm*******
+// ******************6/6/2020 at 7pm*******
 // Where are we?
 
-// Got a win yesterday with the add and subtract functions. On to the next  one!!!
-// Possible bug: not all the jeopardy questions are giving me a value, 
-// -After the user answers a question display another random question from the API (this.getNewQuestion).
+// trying to get my Jeopardy API to
+// 1. be able to submit using the enter key
+
+// Note : had a little luck changing the button type to "submit" but it would only worked
+//  after it had been clicked already
+
+// no luck so far
 
 
 

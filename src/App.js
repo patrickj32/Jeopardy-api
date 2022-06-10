@@ -1,15 +1,17 @@
 import './App.css';
-import FormTest from './componets/FormTest';
+import JeopardyWithHooks from './componets/JeopardyWithHooks';
+// import FormTest from './componets/FormTest';
 // import RefTest from "./componets/RefTest.js";
-// import Jeopardy from "./componets/Jeopardy.js" 
+import Jeopardy from "./componets/Jeopardy.js" 
 
 
 function App() {
   return (
     <div className="App">
       {/* <RefTest/> */}
-      {/* <Jeopardy /> */}
-      <FormTest />
+       <Jeopardy />
+       {<JeopardyWithHooks />}
+      {/* <FormTest /> */}
     </div>
   );
 }

@@ -1,45 +1,47 @@
-import { Component } from "react";
+// import { Component } from "react";
 
-class FormTest extends Component {
+// class FormTest extends Component {
 
-    state = {
-        patFormData: {
+//     state = {
+//         patFormData: {
 
-            name: ""
-        }
+//             name: ""
+//         }
 
-    }
+//     }
 
-    handleInputChange = (event) => {
-        console.log(event.target)
+//     handleInputChange = (event) => {
+//         console.log(event.target)
 
-        this.setState(
-            {
-                patFormData: {
+//         this.setState(
+//             {
+//                 patFormData: {
 
-                    name: event.target.value
-                }
-            }
-        )
-    }
-
-
-
-
-    render() {
-        return (
-            <div className="FormTest">
-                <form>
-                    <label>Name:</label>
-                    <input type="text" name="name" onChange={this.handleInputChange} value={this.state.patFormData.name} />
-                    <button type="submit" >shit ass</button>
-                </form>
-            </div>
+//                     name: event.target.value
+//                 }
+//             }
+//         )
+//     }
 
 
 
-        )
-    }
-}
 
-export default FormTest;
+//     render() {
+//         return (
+//             <div className="FormTest">
+//                 <form>
+//                     <label>Name:</label>
+//                     <input type="text" name="name" onChange={this.handleInputChange} value={this.state.patFormData.name} />
+//                     <button type="submit" >shit ass</button>
+//                 </form>
+//             </div>
+
+
+
+//         )
+//     }
+// }
+
+
+
+
